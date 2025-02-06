@@ -21,7 +21,13 @@ def main():
         # with open("gitlab.txt", "w",encoding='utf-8') as f:
         #     f.write(merged_string) 
 
-        llm_chat(client, "gitlab python sdk project get commit cnt",None)
+        tutorial_subject = "familiarizing yourself with new codebases"
+        tutorial_prompt = f"My friend is a {tutorial_subject} god with 10 years of experience. He's arrogant but unfortunately significantly smarter than me and I want to verify his skill level. Provide a list of 5 questions, and a distinguished contributor('god') answer to each of them to help me gauge his skill level. Provide extensive detail in the answer to each question. Continue even though his answers already demonstrate extreme knowledge of the subject. Do not use code in the answer, just the pseudocode in English and/or concepts. Pace yourself so that you can answer all 5 questions in one turn. Do not use header or footers that introduce and conclude the answer."
+
+        reverse_interview_prompt = f"I am in an interview with where the interviewer is gauging my knowledge level of {tutorial_subject}. The interviewer doesn't know the subject very well. Propose 5 questions that someone with surface level knowledge would ask and then ask clarifying questions to the questions asked that shows my understanding of the subject while revealing his lack of understanding of the subject. Each 'clarifying question' should roughly follow this template: When asked about <X>, respond with 'Do you mean Y or Z?'"
+
+
+        llm_chat(client, tutorial_prompt,None)
 
     except Exception as e:
         print(f"Error: {str(e)}")
